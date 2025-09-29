@@ -14,7 +14,7 @@ const derivationPath = "m/44'/60'/0'/0/0";
 const web3 = new Web3(BSC_RPC_URL);
 
 // --- Timer Settings ---
-const BATCH_SIZE = 30;                 // <<< NEW: Number of wallets to check per interval
+const BATCH_SIZE = 10;                 // <<< NEW: Number of wallets to check per interval
 const INTERVAL_SECONDS = 5;
 const OUTPUT_FILE = 'found_wallets.txt'; 
 
@@ -90,8 +90,9 @@ async function processBatch() {
                 foundWallets++;
             } else {
                 // Log 0 balance to console without saving to file
-                // console.log(`  [Checked] ${details.address}: 0 BNB`); 
+                 console.log(`  [Checked] ${details.address}: 0 BNB`); 
             }
+
 
         } catch (error) {
             console.error(`  [CRITICAL ERROR] Failed to process wallet: ${error.message}`);
